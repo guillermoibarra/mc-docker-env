@@ -1,0 +1,21 @@
+services:
+  mc-taller-env:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mc-taller-env:latest
+    container_name: mc-taller-env-container
+    ports:
+      - "8888-8899:8888-8899"
+    volumes:
+      - taller_data:/home/taller
+    environment:
+      - TZ=America/Mexico_City
+    tty: true
+    stdin_open: true
+    command: ["zsh"]
+
+volumes:
+  taller_data:
+    name: taller_data
+
